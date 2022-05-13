@@ -45,8 +45,4 @@ vault:
         cpu: 25m
   ui:
     enabled: true
-#hostPrefixRegex: "HostRegexp(`{host:admin.+}`)"
-dns:
-  host: "SET BY STAGE VALUES"
-  pathPrefix: "/vault"
-  hostPrefixRegex: "HostRegexp(`{host:admin.+}`)"
+hostPrefixRegex: "HostRegexp(`{host:admin.+}`)"
