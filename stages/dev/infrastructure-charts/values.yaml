@@ -3,7 +3,7 @@ global:
     - name: stage
       value: $STAGE
     - name: dns.host
-      value: "admin.$STAGE-REPLACE_ME.iits.tech"
+      value: "https://admin.dev-workshop-max.iits.tech"
 argocd-config:
   namespace: argocd
 cert-manager:
@@ -13,8 +13,8 @@ traefik:
   helmValues:
     - name: "traefik.deployment.replicas"
       value: "1"
-#storage-classes:
-#  namespace: storage
+storage-classes:
+  namespace: storage
 #admin-dashboard:
 #  namespace: admin
 #kafka:
