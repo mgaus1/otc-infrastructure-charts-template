@@ -3,7 +3,7 @@ vault:
     enabled: false
   server:
     extraEnvironmentVars:
-      VAULT_API_ADDR: "http://admin.dev-workshop-max.iits.tech:8200"
+      VAULT_API_ADDR: "http://$(HOSTNAME).vault-internal:8200"
     ha:
       enabled: true
       replicas: 3
@@ -13,7 +13,7 @@ vault:
         config: |
           ui = true
           disable_mlock = true
-          cluster_addr = "https://admin.dev-workshop-max.iits.tech:8201"
+          cluster_addr = "https://HOSTNAME.vault-internal:8201"
           service_registration "kubernetes" {}
 
           listener "tcp" {
@@ -26,13 +26,13 @@ vault:
             path = "/vault/data"
 
             retry_join {
-              leader_api_addr = "http://admin.dev-workshop-max.iits.tech:8200"
+              leader_api_addr = "http://vault-0.vault-internal:8200"
             }
             retry_join {
-              leader_api_addr = "http://admin.dev-workshop-max.iits.tech:8200"
+              leader_api_addr = "http://vault-1.vault-internal:8200"
             }
             retry_join {
-              leader_api_addr = "http://admin.dev-workshop-max.iits.tech:8200"
+              leader_api_addr = "http://vault-2.vault-internal:8200"
             }
           }
     dataStorage:
