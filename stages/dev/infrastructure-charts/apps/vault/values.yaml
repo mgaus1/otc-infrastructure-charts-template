@@ -1,0 +1,48 @@
+vault:
+  injector:
+    enabled: false
+  server:
+    extraEnvironmentVars:
+      VAULT_API_ADDR: "http://admin.dev-workshop-max.iits.tech:8200"
+    ha:
+      enabled: true
+      replicas: 3
+      raft:
+        setNodeId: true
+        enabled: true
+        config: |
+          ui = true
+          disable_mlock = true
+          cluster_addr = "https://admin.dev-workshop-max.iits.tech:8201"
+          service_registration "kubernetes" {}
+
+          listener "tcp" {
+            tls_disable = 1
+            proxy_protocol_behavior = "use_always"
+            address = "[::]:8200"
+            cluster_address = "[::]:8201"
+          }
+          storage "raft" {
+            path = "/vault/data"
+
+            retry_join {
+              leader_api_addr = "http://admin.dev-workshop-max.iits.tech:8200"
+            }
+            retry_join {
+              leader_api_addr = "http://admin.dev-workshop-max.iits.tech:8200"
+            }
+            retry_join {
+              leader_api_addr = "http://admin.dev-workshop-max.iits.tech:8200"
+            }
+          }
+    dataStorage:
+      size: 10G
+    standalone:
+      enabled: "false"
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 25m
+  ui:
+    enabled: true
+hostPrefixRegex: "HostRegexp(`{host:admin.+}`)"
