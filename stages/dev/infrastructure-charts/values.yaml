@@ -15,9 +15,9 @@ traefik:
       value: "1"
 storage-classes:
   namespace: storage
-#admin-dashboard:
-#  namespace: admin
-#kafka:
-#  namespace: kafka
-#basic-auth-gateway:
-#  namespace: routing
+admin-dashboard:
+  namespace: admin
+kafka:
+  namespace: kafka
+basic-auth-gateway:
+  namespace: routing
