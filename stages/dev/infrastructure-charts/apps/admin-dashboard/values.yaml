@@ -31,6 +31,7 @@ nginx:
         <li><a href="argocd">ArgoCD</a></li>
         <li><a href="akhq/ui/kafka/topic">akhq (kafka headquarter)</a></li>
         <li><a href="dashboard/#/">Traefik Dashboard</a></li>
+        <li><a href="vault/#/">Vault Dashboard</a></li>
       </ul>
     </body>
     </html>
