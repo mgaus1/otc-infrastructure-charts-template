@@ -3,7 +3,7 @@ global:
     - name: stage
       value: $STAGE
     - name: dns.host
-      value: "https://admin.dev-workshop-max.iits.tech"
+      value: "admin.dev-workshop-max.iits.tech"
 argocd-config:
   namespace: argocd
 cert-manager:
